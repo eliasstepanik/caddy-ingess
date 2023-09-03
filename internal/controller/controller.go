@@ -22,6 +22,7 @@ import (
 	"k8s.io/client-go/util/workqueue"
 
 	// load required caddy plugins
+	_ "github.com/caddy-dns/ionos"
 	_ "github.com/caddyserver/caddy/v2/modules/caddyhttp/reverseproxy"
 	_ "github.com/caddyserver/caddy/v2/modules/caddytls"
 	_ "github.com/caddyserver/caddy/v2/modules/caddytls/standardstek"
@@ -239,6 +240,7 @@ func (c *CaddyController) processNextItem() bool {
 }
 
 // handleErrs reports errors received from queue actions.
+//
 //goland:noinspection GoUnusedParameter
 func (c *CaddyController) handleErr(err error, action interface{}) {
 	c.logger.Error(err.Error())
